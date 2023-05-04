@@ -25,9 +25,9 @@ Console.WriteLine($"введите пятизначное число");
 int a = Convert.ToInt32(Console.ReadLine());
 
 
-if (a < 10000 && a > 99999){
-    Console.WriteLine($"Вы ввели не пятизначное число");
+if (a > 9999 && a < 100000){
+    polindrom(a);
 }
 else {
-    polindrom(a);
+        Console.WriteLine($"Вы ввели не пятизначное число");
 }
