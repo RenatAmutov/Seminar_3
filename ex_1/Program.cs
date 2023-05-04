@@ -4,56 +4,30 @@
 // 12821 -> да
 // 23432 -> да
 
-// Console.WriteLine($"введите пятизначное число");
-// int a = Convert.ToInt32(Console.ReadLine());
+void polindrom(int a){
+    int b1 =0, b2 = 0; // 
+    int c1 =0, c2 = 0; // 
+    b1 = a/10000;
+    b2 = (a-b1*10000)/1000;
 
-// if (a>99999 && a<9999){
-//     Console.WriteLine($"Вы ввели не пятизначное число");
-// }
+    c2 = a%10;
+    c1 = (a%100 - c2)/10;
 
-//Все переменные long, они могут хранить число длинее, чем int
-//Если достаточно int, то надо все long поменять на int
-long SizeArray(long size){ //метод для определения размера массива
-    long count = 0;
-    while(size > 0){
-    size/=10;
-    count++;
+    if (b1 == c2 && b2 == c1){
+      Console.WriteLine($"{a} число является полиндромом");
     }
-    return count;
-}
-void CreateArray(long[] arr, long size, long num){ //метод для заполнения массива в обратном порядке
-    for(long i = size - 1; i >= 0; i--){
-    arr[i] = num % 10;
-    num /= 10;
-    //Console.Write($"{arr[i]} "); для проверки, что всё правильно заполнилось
-    }
-}
-void PrintArray(long[] arr, long size){ //метод для вывода массива, если надо посмотреть
-    for (long i = 0; i < size; i++){
-    Console.Write($"{arr[i]} ");
-    }
-}
-void Polindrome(long[] arr, long size){ //метод проверки на полиндромность
-    bool poli = true;
-    for (long i = 0; i < size; i++){
-    if(arr[i]==arr[size-1]){
-        size--;
-        poli = true;
-        }
     else {
-        poli = false;
-        break; //если не полиндром, прекращаем проверку, делаем переменную фолс, так срабатывает елсе ниже
-        }
+      Console.WriteLine($"{a} число не является полиндромом");
     }
-    if(poli) Console.WriteLine("Полиндром");
-    else Console.WriteLine("Не полиндром");
 }
-Console.Write("Введите число: ");
-long num = Convert.ToInt64(Console.ReadLine());
-long size = SizeArray(num);
-long[] arr = new long[size];
-CreateArray(arr, size, num);
-PrintArray(arr, size);
-Console.WriteLine();
-Polindrome(arr, size);
 
+Console.WriteLine($"введите пятизначное число");
+int a = Convert.ToInt32(Console.ReadLine());
+
+
+if (a < 10000 && a > 99999){
+    Console.WriteLine($"Вы ввели не пятизначное число");
+}
+else {
+    polindrom(a);
+}
